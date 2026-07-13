@@ -22,15 +22,17 @@ st.markdown("---")
 # Load YOLO Model
 @st.cache_resource
 def load_model():
-    model_path = os.path.join("backend", "yolo12s_RDD2022_best.pt")
-    if not os.path.exists(model_path):
-        model_path = "yolo12s_RDD2022_best.pt"
-    return YOLO(model_path)
+    possible_paths = [
+        "backend/yolo12s_RDD2022_best.pt",
+        "./backend/yolo12s_RDD2022_best.pt",
+        "yolo12s_RDD2022_best.pt"
+    ]
 
-try:
-    model = load_model()
-except Exception as e:
-    st.error(f"Could not load YOLO model. Error: {e}")
+    for path in possible_paths:
+        if os.path.exists(path):
+            return YOLO(path)
+
+    st.error("Model file not found.")
     st.stop()
 
 # Initialize session database
