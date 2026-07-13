@@ -1,0 +1,54 @@
+Last login: Fri Jul 10 09:51:01 on ttys000
+(base) siddhi_ambatkar@Siddhis-MacBook-Air ~ % pip install opencv-python
+Requirement already satisfied: opencv-python in /opt/anaconda3/lib/python3.13/site-packages (4.12.0.88)
+Requirement already satisfied: numpy<2.3.0,>=2 in /opt/anaconda3/lib/python3.13/site-packages (from opencv-python) (2.1.3)
+(base) siddhi_ambatkar@Siddhis-MacBook-Air ~ % >....                            
+    # or if you want to sound the alarm *while* it's moving near the borders:
+    if motion_detected:
+        cv2.putText(frame, "MOTION DETECTED!", (10, 30),
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
+
+        # Trigger a system beep (Frequency: 1000Hz, Duration: 200ms)
+        # Note: This is synchronous and might cause a tiny stutter in the video feed.
+        winsound.Beep(1000, 200)
+    else:
+        cv2.putText(frame, "System Clear", (10, 30),
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+
+    # Display the live video feed
+    cv2.imshow("Motion Detector", frame)
+
+    # Break the loop if the 'q' key is pressed
+    if cv2.waitKey(10) & 0xFF == ord('q'):
+        break
+
+# Cleanup
+cap.release()
+cv2.destroyAllWindows()
+zsh: parse error near `)'
+(base) siddhi_ambatkar@Siddhis-MacBook-Air ~ % nano motion.py
+
+  UW PICO 5.09                    File: motion.py                     Modified  
+
+    # Alarm Logic for Mac  
+    if motion_detected:
+        cv2.putText(frame, "MOTION DETECTED!", (10, 30),
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
+        # Sounds a system alert beep on macOS
+        os.system("printf '\a'")
+    else:
+        cv2.putText(frame, "System Clear", (10, 30),
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+    
+    cv2.imshow("Motion Detector", frame)
+    
+    if cv2.waitKey(10) & 0xFF == ord('q'):
+        break       
+        
+cap.release()
+cv2.destroyAllWindows()
+        
+                    
+
+^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Pg   ^K Cut Text  ^C Cur Pos   
+^X Exit      ^J Justify   ^W Where is  ^V Next Pg   ^U UnCut Text^T To Spell  
