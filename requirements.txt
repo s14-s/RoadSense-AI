@@ -1,7 +1,6 @@
-cat << 'EOF' > requirements.txt
-streamlit==1.35.0
-ultralytics==8.2.0
-opencv-python-headless==4.9.0.80
+streamlit>=1.35.0
+ultralytics
+opencv-python-headless
 pillow
 numpy
 pandas
@@ -9,4 +8,3 @@ streamlit-webrtc
 av
 streamlit-folium
 folium
-EOF
